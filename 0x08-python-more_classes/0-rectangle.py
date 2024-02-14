@@ -1,15 +1,6 @@
 #!/usr/bin/python3
-"""Defining my rectangle class"""
+Rectangle = __import__('0-rectangle').Rectangle
 
-
-class Rectangle:
-    def __init__(self, length, width):
-        self.length = length
-        self.width = width
-
-    def area(self):
-        return self.length * self.width
-
-    def perimeter(self):
-        return 2 * (self.length + self.width)
-
+my_rectangle = Rectangle()
+print(type(my_rectangle))
+print(my_rectangle.__dict__)
