@@ -3,33 +3,32 @@
 """Matrix divisor function"""
 
 
-def matrix_divided(matrix, div):
-    """Divide all elements of a matrix.
-    Args:
-        matrix (list): A list of lists of ints or floats.
-        div (int/float): The divisor.
-    Raises:
-        TypeError: If the matrix contains non-numbers.
-        TypeError: If the matrix contains rows of different sizes.
-        TypeError: If div is not an int or float.
-        ZeroDivisionError: If div is 0.
-    Returns:
-        A new matrix representing the result of the division.
+def add_integer(a, b=98):
     """
-    if (not isinstance(matrix, list) or matrix == [] or
-            not all(isinstance(row, list) for row in matrix) or
-            not all((isinstance(ele, int) or isinstance(ele, float))
-                    for ele in [num for row in matrix for num in row])):
-        raise TypeError("matrix must be a matrix (list of lists) of "
-                        "integers/floats")
+    Adds two integers.
 
-    if not all(len(row) == len(matrix[0]) for row in matrix):
-        raise TypeError("Each row of the matrix must have the same size")
+    Args:
+        a (int or float): The first number.
+        b (int or float): The second number. Defaults to 98.
 
-    if not isinstance(div, int) and not isinstance(div, float):
-        raise TypeError("div must be a number")
+    Returns:
+        int: The sum of a and b.
 
-    if div == 0:
-        raise ZeroDivisionError("division by zero")
+    Raises:
+        TypeError: If a or b is not an integer or float.
+    """
+    # Check if a is an integer or float
+    if not isinstance(a, (int, float)):
+        raise TypeError("a must be an integer or float")
+    
+    # Check if b is an integer or float
+    if not isinstance(b, (int, float)):
+        raise TypeError("b must be an integer or float")
 
-    return ([list(map(lambda x: round(x / div, 2), row)) for row in matrix])
+    # Convert a and b to integers if they are floats
+    a = int(a)
+    b = int(b)
+
+    # Perform addition and return the result
+    return a + b
+
