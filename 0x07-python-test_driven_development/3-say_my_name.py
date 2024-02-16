@@ -1,22 +1,24 @@
 #!/usr/bin/python3
-
-"""Print the last and first name and run a bunch of tests to fool the checker"""
+"""
+    This is the ``say_my_name`` module.
+    The say_my_name module supplies one function, say_my_name().
+"""
 
 
 def say_my_name(first_name, last_name=""):
-    """Function to return formated name
-    Args:
-        first_name (str) -> The first name
-        last_name (str)  -> The last name
-    Returns:
-        'My name is <first_name> <last_name>'
     """
-    try:
-        if not isinstance(first_name, str):
-            raise TypeError("first_name must be a string")
-        if not isinstance(last_name, str):
-            raise TypeError("last_name must be a string")
-        else:
-            return ("My name is {} {}".format(first_name, last_name))
-    except Exception as ex:
-        return (ex)
+        this functions prints a string:
+        e.g: My namem is <fist name> <last name>
+
+        Args:
+            first_name (str): The first name
+            last_name (str): The last name (Optional)
+    """
+
+    if type(first_name) is not str:
+        raise TypeError("first_name must be a string")
+
+    if type(last_name) is not str:
+        raise TypeError("last_name must be a string")
+
+    print("My name is {:s} {:s}".format(first_name, last_name))
