@@ -1,28 +1,32 @@
 #!/usr/bin/python3
-
-"""Student class to represent a student"""
+"""``Student`` class module"""
 
 
 class Student:
-    """Defining student class """
+    """A class the represent a student"""
+
     def __init__(self, first_name, last_name, age):
-        """Student constructor
-        Args:
-            first_name(str)
-            last_name(str)
-            age(str)
+        """Sets attributes of a new Student instance
+
+            Args:
+                first_name (str): The first name
+                last_name (str): The last name
+                age (int): The age
         """
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        """ Retrive information about an instance to json
-        Args:
-            attrs(list) -> List of attribute to be retrieved
-        """
-        if (type(attrs) == list and
-                all(type(element) == str for element in attrs)):
-            return {key: getattr(self, key)
-                    for key in attrs if hasattr(self, key)}
-        return self.__dict__
+        """Returns a json represent of Student"""
+        r = {}
+        if attrs is not None:
+            keys = [key for key in self.__dict__ if key in attrs]
+        else:
+            keys = [key for key in self.__dict__]
+
+        for key in keys:
+            value = getattr(self, key)
+            if type(value) in [list, dict, str, int, bool]:
+                r[key] = value
+        return r
